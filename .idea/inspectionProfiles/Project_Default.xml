@@ -1,0 +1,75 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="1">
+            <item index="0" class="java.lang.String" itemvalue="social:begin" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="rest_auth" />
+            <item index="1" class="java.lang.String" itemvalue="decouple" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E116" />
+          <option value="E265" />
+          <option value="W292" />
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="repr" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="main.models.Post.objects" />
+          <option value="main.models.Category.objects" />
+          <option value="main.models.PostImages.objects" />
+          <option value="main.models.Comment.objects" />
+          <option value="main.models.Like.objects" />
+          <option value="category.models.Category.objects" />
+          <option value="product.models.Product.objects" />
+          <option value="product.serializers.data" />
+          <option value="order.models.Order.id" />
+          <option value="order.models.Order.objects" />
+          <option value="order.models.OrderItem.objects" />
+          <option value="cinema.models.Movie.objects" />
+          <option value="LikeCommentFavorites.models.Category.objects" />
+          <option value="LikeCommentFavorites.models.Post.objects" />
+          <option value="LikeCommentFavorites.models.Like.objects" />
+          <option value="LikeCommentFavorites.models.Comment.objects" />
+          <option value="LikeCommentFavorites.models.PostImages.objects" />
+          <option value="buy.models.OrderItem.objects" />
+          <option value="buy.models.Order.objects" />
+          <option value="like.models.Like.objects" />
+          <option value="cinema.models.Like.objects" />
+          <option value="cinema.models.Favorites.objects" />
+          <option value="type.with_ui" />
+          <option value="type.without_ui" />
+          <option value="django.db.models.fields.related.ManyToManyField.remove" />
+          <option value="django.db.models.fields.related.ManyToManyField.all" />
+          <option value="comment.models.Comment.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
