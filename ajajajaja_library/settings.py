@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'comment',
     'buy',
     'rating',
-
 ]
 
 MIDDLEWARE = [

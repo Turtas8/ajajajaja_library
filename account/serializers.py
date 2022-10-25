@@ -48,3 +48,32 @@ class LogoutSerializer(serializers.Serializer):
             RefreshToken(self.token).blacklist()
         except TokenError:
             self.fail('bad_token')
+
+
+class ForgotPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=100, required=True)
+
+
+class RestorePasswordSerializer(serializers.Serializer):
+    code = serializers.CharField(max_length=100, required=True)
+    password = serializers.CharField(min_length=8, required=True)
+    password2 = serializers.CharField(min_length=8, required=True)
+
+    def validate(self, attrs):
+        password2 = attrs.pop('password2')
+        if password2 != attrs['password']:
+            raise serializers.ValidationError('Passwords didn\'t match!')
+        try:
+            user = User.objects.get(activation_code=attrs['code'])
+        except User.DoesNotExist:
+            raise serializers.ValidationError('Your code is incorrect!')
+        attrs['user'] = user
+        return attrs
+
+    def save(self, **kwargs):
+        data = self.validated_data
+        user = data['user']
+        user.set_password(data['password'])
+        user.activation_code = ''
+        user.save()
+        return user
