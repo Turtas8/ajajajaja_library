@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'ajajajaja_library.urls'
+ROOT_URLCONF = 'ajajajaja_book.urls'
 
 TEMPLATES = [
     {
@@ -82,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ajajajaja_library.wsgi.application'
+WSGI_APPLICATION = 'ajajajaja_book.wsgi.application'
 
 
 # Database
