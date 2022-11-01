@@ -15,6 +15,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 Deprecated==1.2.13
 Django==4.1.2
+django-cors-headers==3.13.0
 django-filter==22.1
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.1
