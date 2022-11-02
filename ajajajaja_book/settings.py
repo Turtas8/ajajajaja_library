@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from typing import Any
 from decouple import config
 from datetime import timedelta
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'corsheaders',
+    'simple_chatbot',
     # my_apps
     'account',
     'category',
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
     'comment',
     'buy',
     'rating',
+    'chatbot',
 ]
 
 MIDDLEWARE = [
@@ -209,3 +212,10 @@ CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+SIMPLE_CHATBOT: Any = {
+    'responses': (
+        ("chatbot.responses.GreetingResponse", "Greeting"),
+        ("chatbot.responses.GoodbyeResponse", "Goodbye"),
+    ),
+}

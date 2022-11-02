@@ -22,6 +22,7 @@ from rest_framework import permissions
 from drf_yasg import openapi
 from rest_framework.routers import SimpleRouter
 from category.views import CategoryViewSet
+from chatbot.views import Chatbot
 from library.views import BookViewSet
 
 
@@ -53,6 +54,7 @@ urlpatterns = [
     path('api/v1/accounts/', include('account.urls')),
     path('api/v1/buys/', include('buy.urls')),
     path('api/v1/comments/', include('comment.urls')),
+    path('api/v1/chatbot/', Chatbot.as_view()),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
