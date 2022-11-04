@@ -15,15 +15,15 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .service import BookFilter, AudioBookFilter
 
 
-class StandartResultPagination(PageNumberPagination):
-    page_size = 3
-    page_query_param = 'page'
-    max_page_size = 1000
+# class StandartResultPagination(PageNumberPagination):
+#     page_size = 3
+#     page_query_param = 'page'
+#     max_page_size = 1000
 
 
 class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
-    pagination_class = StandartResultPagination
+    # pagination_class = StandartResultPagination
     filter_backends = (SearchFilter, DjangoFilterBackend)
     search_fields = ('title',)
     filterset_class = BookFilter
@@ -131,7 +131,7 @@ class BookViewSet(ModelViewSet):
 
 class AudioBookViewSet(ModelViewSet):
     queryset = AudioBook.objects.all()
-    pagination_class = StandartResultPagination
+    # pagination_class = StandartResultPagination
     filter_backends = (SearchFilter, DjangoFilterBackend)
     search_fields = ('title',)
     filterset_class = AudioBookFilter
