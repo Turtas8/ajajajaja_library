@@ -13,7 +13,7 @@ class Book(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, related_name='books', on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='images')
-    text = models.FileField(upload_to='books')
+    text = models.URLField(upload_to='books')
 
     class Meta:
         ordering = ['title']
