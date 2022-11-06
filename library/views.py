@@ -11,7 +11,6 @@ from rest_framework.response import Response
 from .models import Like, Favorites
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
-
 from .service import BookFilter, AudioBookFilter
 
 
@@ -36,7 +35,7 @@ class BookViewSet(ModelViewSet):
     def get_permissions(self):
         if self.action in ('update', 'partial_update', 'destroy'):
             return [permissions.IsAuthenticated(), IsAuthor()]
-        elif self.action in ('create', 'add_to_liked', 'remove_from_liked', 'favorite_action'):
+        elif self.action in ('create', 'add_to_liked', 'remove_from_liked', 'favorite_action', 'remove_from_favorites'):
             return [permissions.IsAuthenticated()]
         else:
             return [permissions.IsAuthenticatedOrReadOnly()]
@@ -44,7 +43,6 @@ class BookViewSet(ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-    # api/v1/books/<id>/reviews/
     @action(['GET', 'POST'], detail=True)
     def reviews(self, request, pk):
         book = self.get_object()
@@ -76,7 +74,6 @@ class BookViewSet(ModelViewSet):
         Like.objects.create(owner=user, book=book)
         return Response('You Liked The Movie', status=201)
 
-    # /posts/<id>?remove_from_liked/
     @action(['DELETE'], detail=True)
     def remove_from_liked(self, request, pk):
         book = self.get_object()
@@ -144,7 +141,7 @@ class AudioBookViewSet(ModelViewSet):
     def get_permissions(self):
         if self.action in ('update', 'partial_update', 'destroy'):
             return [permissions.IsAuthenticated(), IsAuthor()]
-        elif self.action in ('create', 'add_to_liked', 'remove_from_liked', 'favorite_action'):
+        elif self.action in ('create', 'add_to_liked', 'remove_from_liked', 'favorite_action', 'remove_from_favorites'):
             return [permissions.IsAuthenticated()]
         else:
             return [permissions.IsAuthenticatedOrReadOnly()]
@@ -152,7 +149,6 @@ class AudioBookViewSet(ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-    # api/v1/movies/<id>/reviews/
     @action(['GET', 'POST'], detail=True)
     def reviews(self, request, pk):
         audio_book = self.get_object()
@@ -184,7 +180,6 @@ class AudioBookViewSet(ModelViewSet):
         Like.objects.create(owner=user, audio_book=audio_book)
         return Response('You Liked The Movie', status=201)
 
-    # /posts/<id>?remove_from_liked/
     @action(['DELETE'], detail=True)
     def remove_from_liked(self, request, pk):
         audio_book = self.get_object()

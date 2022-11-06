@@ -9,7 +9,7 @@ class BookListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ('id', 'owner', 'title', 'description', 'price', 'image')
+        fields = ('id', 'owner', 'title', 'description', 'price', 'image', 'isAuthor')
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
@@ -37,7 +37,7 @@ class AudioBookListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AudioBook
-        fields = ('id', 'owner', 'title', 'description', 'price', 'image')
+        fields = ('id', 'owner', 'title', 'description', 'price', 'image', 'isAuthor')
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)

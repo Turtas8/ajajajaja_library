@@ -14,6 +14,7 @@ class Book(models.Model):
     category = models.ForeignKey(Category, related_name='books', on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='images')
     text = models.URLField(max_length=1000)
+    isAuthor = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['title']
@@ -30,6 +31,7 @@ class AudioBook(models.Model):
     category = models.ForeignKey(Category, related_name='audio_books', on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='images')
     audio = models.FileField(upload_to='audio_books')
+    isAuthor = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['title']
@@ -50,7 +52,7 @@ class Like(models.Model):
 class Favorites(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorites')
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='favorites')
-    audio_book = models.ForeignKey(AudioBook, on_delete=models.CASCADE, related_name='favorites', null=True)
+    audio_book = models.ForeignKey(AudioBook, on_delete=models.CASCADE, related_name='favorites')
 
     class Meta:
         unique_together = ['owner', 'book', 'audio_book']
