@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'buy',
     'rating',
     'chatbot',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -170,13 +171,17 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        # 'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-        # 'rest_framework_social_oauth2.authentication.SocialAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated'
-    ]
+    ],
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
 }
 
 SIMPLE_JWT = {
@@ -221,4 +226,36 @@ SIMPLE_CHATBOT: Any = {
         ("chatbot.responses.GreetingResponse", "Greeting"),
         ("chatbot.responses.GoodbyeResponse", "Goodbye"),
     ),
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '{module} {asctime} {levelname} {filename} {message}',
+            'style': '{'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'ERROR',
+            'class': 'logging.StreamHandler',
+            'formatter': 'console',
+        },
+        'file': {
+            "class": "logging.FileHandler",
+            "formatter": "console",
+            'filename': 'information.log',
+        },
+
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+
+    },
 }

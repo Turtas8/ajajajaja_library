@@ -9,6 +9,7 @@ User = get_user_model()
 class Book(models.Model):
     owner = models.ForeignKey(User, on_delete=models.RESTRICT, related_name='books')
     title = models.CharField(max_length=100)
+    author_name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, related_name='books', on_delete=models.SET_NULL, null=True)
@@ -26,6 +27,7 @@ class Book(models.Model):
 class AudioBook(models.Model):
     owner = models.ForeignKey(User, on_delete=models.RESTRICT, related_name='audio_books')
     title = models.CharField(max_length=100)
+    author_name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, related_name='audio_books', on_delete=models.SET_NULL, null=True)

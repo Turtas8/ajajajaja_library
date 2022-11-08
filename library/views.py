@@ -2,6 +2,7 @@ from rest_framework import permissions, response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
+from rating.models import Review
 from . import serializers
 from .models import Book, AudioBook
 from .permissions import IsAuthor
@@ -11,6 +12,7 @@ from rest_framework.response import Response
 from .models import Like, Favorites
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
+from .serializers import BookListSerializer
 from .service import BookFilter, AudioBookFilter
 
 
@@ -24,7 +26,9 @@ class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
     pagination_class = StandartResultPagination
     filter_backends = (SearchFilter, DjangoFilterBackend)
-    search_fields = ('title',)
+    search_fields = ('title', 'owner', 'author_name')
+    # filter_fields = ('price',)
+    # ordering_fields = ('price', 'author_name')
     filterset_class = BookFilter
 
     def get_serializer_class(self):
