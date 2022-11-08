@@ -2,7 +2,6 @@ from rest_framework import permissions, response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
-from rating.models import Review
 from . import serializers
 from .models import Book, AudioBook
 from .permissions import IsAuthor

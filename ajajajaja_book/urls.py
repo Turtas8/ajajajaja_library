@@ -56,7 +56,7 @@ urlpatterns = [
     path('api/v1/buys/', include('buy.urls')),
     path('api/v1/comments/', include('comment.urls')),
     path('api/v1/chatbot/', Chatbot.as_view()),
-    path('', include('chat.urls')),
+    # path('', include('chat.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
