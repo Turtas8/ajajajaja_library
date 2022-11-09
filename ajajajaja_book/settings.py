@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'simple_chatbot',
-    'social_django',
+    # 'social_django',
     # my_apps
     'account',
     'category',
