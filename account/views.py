@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.shortcuts import render
 from rest_framework import permissions, generics
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
@@ -94,3 +95,7 @@ class FollowSpamApi(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save(email=request.user.email)
         return Response('Followed to spam!', 201)
+
+
+def auth(request):
+    return render(request, 'oauth.html')

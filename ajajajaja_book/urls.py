@@ -21,9 +21,10 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from drf_yasg import openapi
 from rest_framework.routers import SimpleRouter
+from account.views import auth
 from category.views import CategoryViewSet
 from chatbot.views import Chatbot
-from library.views import BookViewSet, AudioBookViewSet, auth
+from library.views import BookViewSet, AudioBookViewSet
 
 router = SimpleRouter()
 router.register('categories', CategoryViewSet)
