@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'buy',
     'rating',
     'chatbot',
-    'chat',
+    'public_chat',
 ]
 
 MIDDLEWARE = [
