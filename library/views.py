@@ -1,7 +1,6 @@
 from rest_framework import permissions, response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
-from rest_framework.pagination import PageNumberPagination
 from . import serializers
 from .models import Book, AudioBook
 from .permissions import IsAuthor
@@ -15,15 +14,8 @@ from .serializers import BookListSerializer
 from .service import BookFilter, AudioBookFilter
 
 
-class StandartResultPagination(PageNumberPagination):
-    page_size = 6
-    page_query_param = 'page'
-    max_page_size = 1000
-
-
 class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
-    pagination_class = StandartResultPagination
     filter_backends = (SearchFilter, DjangoFilterBackend)
     search_fields = ('title', 'owner', 'author_name')
     # filter_fields = ('price',)
@@ -131,7 +123,6 @@ class BookViewSet(ModelViewSet):
 
 class AudioBookViewSet(ModelViewSet):
     queryset = AudioBook.objects.all()
-    pagination_class = StandartResultPagination
     filter_backends = (SearchFilter, DjangoFilterBackend)
     search_fields = ('title',)
     filterset_class = AudioBookFilter

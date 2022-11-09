@@ -15,7 +15,6 @@ class Book(models.Model):
     category = models.ForeignKey(Category, related_name='books', on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='images')
     text = models.URLField(max_length=1000)
-    isAuthor = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['title']
@@ -33,7 +32,6 @@ class AudioBook(models.Model):
     category = models.ForeignKey(Category, related_name='audio_books', on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='images')
     audio = models.FileField(upload_to='audio_books')
-    isAuthor = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['title']
