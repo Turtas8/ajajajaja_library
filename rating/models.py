@@ -12,13 +12,7 @@ class Mark:
     three = 3
     four = 4
     five = 5
-    six = 6
-    seven = 7
-    eight = 8
-    nine = 9
-    ten = 10
-    marks = ((one, 'Too bad!'), (two, 'Too Bad!'), (three, 'Bad!'), (four, 'Not Good!'), (five, 'Normal!'),
-             (six, 'Better than Normal!'), (seven, 'Good!'), (eight, 'Very Good!'), (nine, 'Very Very Good!'), (ten, 'Excellent'))
+    marks = ((one, 'Too bad!'), (two, 'Bad!'), (three, 'Normal!'), (four, 'Good!'), (five, 'Excellent!'))
 
 
 class Review(models.Model):
