@@ -23,8 +23,7 @@ from drf_yasg import openapi
 from rest_framework.routers import SimpleRouter
 from category.views import CategoryViewSet
 from chatbot.views import Chatbot
-from library.views import BookViewSet, AudioBookViewSet
-
+from library.views import BookViewSet, AudioBookViewSet, auth
 
 router = SimpleRouter()
 router.register('categories', CategoryViewSet)
@@ -57,6 +56,8 @@ urlpatterns = [
     path('api/v1/comments/', include('comment.urls')),
     path('api/v1/chatbot/', Chatbot.as_view()),
     path('', include('chat.urls')),
+    path('', include('social_django.urls', namespace='social')),
+    path('auth/', auth),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

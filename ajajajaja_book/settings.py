@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'simple_chatbot',
-    # 'social_django',
+    'social_django',
     # my_apps
     'account',
     'category',
@@ -76,7 +76,7 @@ ROOT_URLCONF = 'ajajajaja_book.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,6 +106,10 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -262,3 +266,7 @@ LOGGING = {
 
     },
 }
+SOCIAL_AUTH_GITHUB_KEY = 'a06ea3ca0063fa4f5f69'
+SOCIAL_AUTH_GITHUB_SECRET = '4781d83914e0881f65c185c5d01e830defa3621d'
+
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
