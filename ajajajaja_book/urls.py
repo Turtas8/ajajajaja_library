@@ -24,11 +24,12 @@ from rest_framework.routers import SimpleRouter
 from account.views import auth
 from category.views import CategoryViewSet
 from chatbot.views import Chatbot
-from library.views import BookViewSet
+from library.views import BookViewSet, AudioBookViewSet
 
 router = SimpleRouter()
 router.register('categories', CategoryViewSet)
 router.register('books', BookViewSet)
+router.register('audio_books', AudioBookViewSet)
 
 
 schema_view = get_schema_view(

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.db.models import Avg
 from category.models import Category
-from .models import Book, Like, Favorites
+from .models import Book, AudioBook, Like, Favorites
 
 
 class BookListSerializer(serializers.ModelSerializer):
@@ -32,32 +32,32 @@ class BookDetailSerializer(serializers.ModelSerializer):
         return repr
 
 
-# class AudioBookListSerializer(serializers.ModelSerializer):
-#     owner = serializers.ReadOnlyField(source='owner.email')
-#
-#     class Meta:
-#         model = AudioBook
-#         fields = ('owner', 'title', 'author_name', 'description', 'price', 'image')
-#
-#     def to_representation(self, instance):
-#         repr = super().to_representation(instance)
-#         repr['rating'] = instance.reviews.aggregate(Avg('rating'))['rating__avg']
-#         return repr
+class AudioBookListSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.email')
+
+    class Meta:
+        model = AudioBook
+        fields = ('id', 'owner', 'title', 'author_name', 'description', 'price', 'image')
+
+    def to_representation(self, instance):
+        repr = super().to_representation(instance)
+        repr['rating'] = instance.reviews.aggregate(Avg('rating'))['rating__avg']
+        return repr
 
 
-# class AudioBookDetailSerializer(serializers.ModelSerializer):
-#     owner = serializers.ReadOnlyField(source='owner.email')
-#     category = serializers.PrimaryKeyRelatedField(required=True, queryset=Category.objects.all())
-#
-#     class Meta:
-#         model = AudioBook
-#         fields = '__all__'
-#
-#     def to_representation(self, instance):
-#         repr = super().to_representation(instance)
-#         repr['rating'] = instance.reviews.aggregate(Avg('rating'))['rating__avg']
-#         repr['rating_count'] = instance.reviews.count()
-#         return repr
+class AudioBookDetailSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.email')
+    category = serializers.PrimaryKeyRelatedField(required=True, queryset=Category.objects.all())
+
+    class Meta:
+        model = AudioBook
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        repr = super().to_representation(instance)
+        repr['rating'] = instance.reviews.aggregate(Avg('rating'))['rating__avg']
+        repr['rating_count'] = instance.reviews.count()
+        return repr
 
 
 class LikeSerializer(serializers.ModelSerializer):

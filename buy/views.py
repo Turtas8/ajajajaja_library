@@ -21,9 +21,9 @@ class UserOrderList(APIView):
 
     @action(['DELETE'], detail=True)
     def delete_buy(self, request, pk):
-        movie = self.get_object()
+        book = self.get_object()
         user = request.user
-        if not user.order.filter(movie=movie).exists():
+        if not user.order.filter(book=book).exists():
             return Response('You Didn\'t Buy This!', status=400)
-        user.order.filter(movie=movie).delete()
+        user.order.filter(book=book).delete()
         return Response('Your Buy is Deleted!', status=204)
