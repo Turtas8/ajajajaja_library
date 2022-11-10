@@ -9,7 +9,7 @@ class BookListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ('owner', 'title', 'author_name', 'description', 'price', 'image')
+        fields = ('id', 'owner', 'title', 'author_name', 'description', 'price', 'image')
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
